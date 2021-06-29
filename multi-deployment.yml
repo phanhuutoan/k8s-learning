@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: multi-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+  template: 
+    metadata:
+      name: multi-fe-react
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: multi-fe-react-pod 
+          image: superknife0512/multi-fe-react
+          ports:
+            - containerPort: 3000
